@@ -6,13 +6,15 @@ import Link from 'next/link';
 
 const Card = ({data}) => {
     const random= Math.floor(Math.random()*5);
-    console.log(data)
-    const {title,description,image,price,id} =data;
-    console.log(data)
+    
+    const {title,image,price,id} =data;
+    
   return (
     <Link href={`/${id}`}  className = 'h-[20rem] sm:h-[17rem] w-[18rem] sm:w-[15rem] bg-white' >
         <div className='relative h-2/3 w-full'>
-            <Image src={image} fill alt=''/>
+            <Image src={image} fill alt='' sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"/>
         </div>
         <div className='px-2'>
             <TextTruncate

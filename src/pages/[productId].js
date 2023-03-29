@@ -1,11 +1,16 @@
 import React from 'react'
 import Image from 'next/image'
 import Layout from '@/components/Layout'
+import { useDispatch } from 'react-redux'
+import { addToCart } from '@/redux/cart/cartSlice'
 
 const ProductId = ({data}) => {
-    
+    const dispatch = useDispatch();
     const {image,title,description,price} = data
 
+    const handleClick =()=>{
+        dispatch(addToCart(data))
+    }
     return (
         <Layout>
             <div className='grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-3  place-items-center mt-24 w-full'>
@@ -23,7 +28,7 @@ const ProductId = ({data}) => {
                         <p>{price}</p>
                     </div>
                     <p className=''>{description}</p>
-                    <button className='  bg-yellow-500 w-full rounded-md hover:bg-yellow-600'>Buy</button>
+                    <button className='  bg-yellow-500 w-full rounded-md hover:bg-yellow-600' onClick={()=>handleClick()}>Buy</button>
                 </div>
             </div>
         </Layout>

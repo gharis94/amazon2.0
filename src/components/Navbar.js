@@ -1,5 +1,5 @@
 import React from 'react'
-import {AiOutlineAmazon,AiOutlineSearch,AiOutlineShoppingCart} from 'react-icons/ai';
+import {AiOutlineAmazon,AiOutlineSearch} from 'react-icons/ai';
 import CartComponent from './CartComponent';
 import Link from 'next/link';
 
