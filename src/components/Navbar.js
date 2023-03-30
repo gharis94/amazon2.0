@@ -2,10 +2,13 @@ import React from 'react'
 import {AiOutlineAmazon,AiOutlineSearch} from 'react-icons/ai';
 import CartComponent from './CartComponent';
 import Link from 'next/link';
+import {signIn,useSession,signOut} from 'next-auth/react';
 
 const log=true
 
 const Navbar = () => {
+     const {data:session} = useSession()
+     console.log(session)
   return (
     <div className=' h-[5rem] shadow-lg'>
         <div className='bg-gunmetalic h-2/3 w-full flex justify-between'>
@@ -16,11 +19,12 @@ const Navbar = () => {
                 <input className='w-10/12 rounded-l-md pl-4 outline-none' placeholder='Search..'/>
                 <button className='w-2/12 flex justify-center items-center  rounded-r-md bg-yellow-500'><AiOutlineSearch size={20}/></button>
             </div>
-            <div className='sm:mx-10 flex space-x-4  text-white'>
-                <div>
-                    <p>Hello {log? 'Gharis':<p>Sign In</p>}</p>
+            <div className='sm:mx-10 flex space-x-4  text-white cursor-pointer' >
+                <div className = 'flex flex-col justify-center items-center' onClick = {() => !session ? signIn() : signOut()}>
+                    <p>Hello, {session? 'Gharis':<span>Sign In?</span>}</p>
+                    <p className='text-sm font-semibold'>Account & list</p>
                 </div>
-                <div>
+                <div className='flex flex-col justify-center items-center'>
                     <p>Return</p>
                     <p className='font-semibold'>& Orders</p>
                 </div>

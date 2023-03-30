@@ -12,7 +12,7 @@ console.log(a)
 return a
 })
 
-export const cartSelector = createSelector(cart,(x)=>cart);
+export const cartSelector = createSelector(cart,(x)=>x);
 
 export const totalSelector = createSelector(cart,(x)=>x.reduce((acc,cur)=>{
     acc+=cur.quantity*cur.price;
