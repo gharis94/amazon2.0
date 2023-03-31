@@ -5,7 +5,7 @@ export default async (req,res)=>{
     
     const transformedItems=items.map(item=>({
         price_data:{
-            currency:'aed',
+            currency:'gbp',
             unit_amount:item.price*1000,
             product_data:{
                 name:item.title,
@@ -20,7 +20,7 @@ export default async (req,res)=>{
         shipping_address_collection:{
             allowed_countries:['GB',"US","CA"],
         },
-        line_items:[transformedItems],
+        line_items:transformedItems,
         mode:'payment',
         success_url:`${process.env.HOST}/success`,
         cancel_url:`${process.env.HOST}/failed`,
@@ -29,6 +29,6 @@ export default async (req,res)=>{
             images: JSON.stringify(items.map(item=>item.image))
         }
     })
-
+    console.log(session)
     res.status(200).json({id:session.id})
 }
